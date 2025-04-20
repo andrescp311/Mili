@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Para Mili</title>
+    <style>
+        body {
+            background-color: #f3e5f5;
+            font-family: 'Segoe UI', sans-serif;
+            color: #4a148c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 800px;
+            background: #ffffffaa;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #6a1b9a;
+            text-align: center;
+        }
+        .poem {
+            margin: 20px 0;
+            font-size: 18px;
+            line-height: 1.5;
+            text-align: center;
+        }
+        .poem p {
+            margin-bottom: 16px;
+        }
+        .images img {
+            width: 100%;
+            margin-bottom: 10px;
+            border-radius: 10px;
+        }
+        .music {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .music button {
+            padding: 10px 20px;
+            background: #ce93d8;
+            border: none;
+            border-radius: 8px;
+            color: #4a148c;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .password-screen {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #4a148c;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .password-screen input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+        }
+        .password-screen button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #ce93d8;
+            border: none;
+            border-radius: 8px;
+            color: #4a148c;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .heart {
+            position: fixed;
+            color: #ff80ab;
+            animation: float 5s infinite ease-in-out;
+            font-size: 24px;
+            z-index: 0;
+        }
+        @keyframes float {
+            0% {transform: translateY(0);}
+            50% {transform: translateY(-20px);}
+            100% {transform: translateY(0);}
+        }
+    </style>
+</head>
+<body>
+
+<!-- Pantalla de contraseña -->
+<div class="password-screen" id="passwordScreen">
+    <h2>Ingresa la contraseña</h2>
+    <input type="text" id="passwordInput" placeholder="Contraseña">
+    <button onclick="checkPassword()">Entrar</button>
+</div>
+
+<!-- Contenido principal -->
+<div class="container" style="display:none;" id="mainContent">
+    <h1>Para mi hermosa Mili</h1>
+
+    <div class="poem">
+        <p>A veces siento que las palabras no bastan,<br>
+        que lo que te quiero se queda atascado en el pecho,<br>
+        como un suspiro que no se anima a volar.</p>
+
+        <p>La distancia es una jodida villana<br>
+        que me impide tocarte, besarte, morderte las ganas.</p>
+
+        <p>Pero aún desde aquí, tan lejos de tu piel,<br>
+        te pienso, te deseo, te amo como nadie.</p>
+
+        <p>Quisiera ser esa voz en tu oído<br>
+        que te dice cuánto te extraño<br>
+        y lo que haría si te tuviera cerquita...</p>
+
+        <p>Eres mi ternura y mi fuego,<br>
+        la calma que me arropa<br>
+        y el deseo que me desvela.</p>
+
+        <p>Y aunque falte tiempo para vernos,<br>
+        sé que ese día llegará.<br>
+        Y cuando llegue, amor, lo vamos a recuperar todo.</p>
+
+        <p>Porque esto que siento por ti<br>
+        no cabe en un mensaje ni en un poema,<br>
+        pero aquí va uno más... solo para ti.</p>
+    </div>
+
+    <div class="images">
+        <img src="img1.jpg" alt="Imagen 1">
+        <img src="img2.jpg" alt="Imagen 2">
+        <img src="img3.jpg" alt="Imagen 3">
+    </div>
+
+    <div class="music">
+        <button onclick="window.open('https://youtu.be/WGNTevb0dfQ?si=d0AHvstHHA7hd_gf', '_blank')">
+            Escuchar nuestra canción
+        </button>
+    </div>
+</div>
+
+<!-- Corazones flotantes -->
+<script>
+    function checkPassword() {
+        var input = document.getElementById('passwordInput').value;
+        if (input === "Mili💜") {
+            document.getElementById('passwordScreen').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
+        } else {
+            alert("Contraseña incorrecta");
+        }
+    }
+
+    // Corazones flotantes
+    const emojis = ["💜", "💗", "💟", "💕", "💖"];
+    for (let i = 0; i < 25; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.top = Math.random() * 100 + 'vh';
+        heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+        document.body.appendChild(heart);
+    }
+</script>
+
+</body>
+</html>
